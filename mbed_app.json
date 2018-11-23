@@ -1,6 +1,10 @@
 {
     "config": {
-
+        "debug-logs":{        
+            "help": "UART debug logs.",
+            "macro_name": "DEBUG_LOGS",
+            "value": 1
+        }
     },
     "macros" : [
         
