@@ -1,0 +1,95 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build debug",
+            "type": "shell",
+            "windows": {
+                "command": "mbed.exe"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 2,
+                    "line": 3,
+                    "column": 4,
+                    "severity": 5,
+                    "message": 6
+                }
+            },
+            "args": [
+                "compile",
+                "--profile",
+                "debug",
+                "--source",
+                ".",
+                "--source",
+                "./../mbed-os",
+                "--color",
+                "-N",
+                "firmware",
+                "-c"
+            ],
+            "presentation": {
+                "reveal": "always",
+            }
+        },
+        {
+            "label": "build release",
+            "type": "shell",
+            "windows": {
+                "command": "mbed.exe"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 2,
+                    "line": 3,
+                    "column": 4,
+                    "severity": 5,
+                    "message": 6
+                }
+            },
+            "args": [
+                "compile",
+                "--profile",
+                "release",
+                "--source",
+                ".",
+                "--source",
+                "./../mbed-os",
+                "--color",
+                "-N",
+                "firmware",
+            ],
+            "presentation": {
+                "reveal": "always",
+            }
+        },
+        {
+            "label": "flash release",
+            "type": "shell",
+            "windows": {
+                "command": "ST-LINK_CLI.exe"
+            },
+            "args": [
+                "-P",
+                "${workspaceFolder}\\BUILD\\NUCLEO_F401RE\\GCC_ARM-RELEASE\\firmware.bin",
+                "0x08000000",
+                "-V",
+                "\"after_programming\"",
+                "-Rst"
+            ]
+        }
+    ]
+}
