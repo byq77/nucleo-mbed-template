@@ -1,8 +1,5 @@
 #include <mbed.h>
 #include <Thread.h>
-#include <ThisThread.h>
-
-using namespace rtos;
 
 DigitalOut led(LED1);
 

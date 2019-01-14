@@ -1,11 +1,71 @@
 {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build debug",
+            "label": "CLEAN BUILD (RELEASE)",
             "type": "shell",
-            "windows": {
-                "command": "mbed.exe"
+            "command": "mbed",
+            "args": [
+                "compile",
+                "-m",
+                "NUCLEO_F401RE",
+                "-t",
+                "GCC_ARM",
+                "--profile",
+                "${workspaceFolder}/custom_profiles/release.json",
+                "-c",
+                "-N",
+                "firmware",
+                "--source",
+                "${workspaceFolder}/../mbed-os",
+                "--source",
+                "${workspaceFolder}",
+                "--build",
+                "${workspaceFolder}/BUILD/RELEASE"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 2,
+                    "line": 3,
+                    "column": 4,
+                    "severity": 5,
+                    "message": 6
+                }
+            }
+        },
+        {
+            "label": "BUILD (RELEASE)",
+            "type": "shell",
+            "command": "mbed",
+            "args": [
+                "compile",
+                "-m",
+                "NUCLEO_F401RE",
+                "-t",
+                "GCC_ARM",
+                "--profile",
+                "${workspaceFolder}/custom_profiles/release.json",
+                "-N",
+                "firmware",
+                "--source",
+                "${workspaceFolder}/../mbed-os",
+                "--source",
+                "${workspaceFolder}",
+                "--build",
+                "${workspaceFolder}/BUILD/RELEASE"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
             },
             "problemMatcher": {
                 "owner": "cpp",
@@ -21,30 +81,31 @@
                     "severity": 5,
                     "message": 6
                 }
-            },
-            "args": [
-                "compile",
-                "--profile",
-                "debug",
-                "--source",
-                ".",
-                "--source",
-                "./../mbed-os",
-                "--color",
-                "-N",
-                "firmware",
-                "-c"
-            ],
-            "presentation": {
-                "reveal": "always",
             }
         },
         {
-            "label": "build release",
+            "label": "CLEAN BUILD (DEBUG)",
             "type": "shell",
-            "windows": {
-                "command": "mbed.exe"
-            },
+            "command": "mbed",
+            "args": [
+                "compile",
+                "-m",
+                "NUCLEO_F401RE",
+                "-t",
+                "GCC_ARM",
+                "--profile",
+                "${workspaceFolder}/custom_profiles/release.json",
+                "-c",
+                "-N",
+                "firmware",
+                "--source",
+                "${workspaceFolder}/../mbed-os",
+                "--source",
+                "${workspaceFolder}",
+                "--build",
+                "${workspaceFolder}/BUILD/RELEASE"
+            ],
+            "group": "build",
             "problemMatcher": {
                 "owner": "cpp",
                 "fileLocation": [
@@ -59,37 +120,82 @@
                     "severity": 5,
                     "message": 6
                 }
-            },
-            "args": [
-                "compile",
-                "--profile",
-                "release",
-                "--source",
-                ".",
-                "--source",
-                "./../mbed-os",
-                "--color",
-                "-N",
-                "firmware",
-            ],
-            "presentation": {
-                "reveal": "always",
             }
         },
         {
-            "label": "flash release",
+            "label": "BUILD (DEBUG)",
             "type": "shell",
-            "windows": {
-                "command": "ST-LINK_CLI.exe"
-            },
+            "command": "mbed",
             "args": [
-                "-P",
-                "${workspaceFolder}\\BUILD\\NUCLEO_F401RE\\GCC_ARM-RELEASE\\firmware.bin",
-                "0x08000000",
-                "-V",
-                "\"after_programming\"",
-                "-Rst"
-            ]
+                "compile",
+                "-m",
+                "NUCLEO_F401RE",
+                "-t",
+                "GCC_ARM",
+                "--profile",
+                "${workspaceFolder}/custom_profiles/debug.json",
+                "-N",
+                "firmware",
+                "--source",
+                "${workspaceFolder}/../mbed-os",
+                "--source",
+                "${workspaceFolder}",
+                "--build",
+                "${workspaceFolder}/BUILD/DEBUG"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 2,
+                    "line": 3,
+                    "column": 4,
+                    "severity": 5,
+                    "message": 6
+                }
+            }
+        },
+        {
+            "label": "FLASH FIRMWARE (RELEASE)",
+            "type": "shell",
+            "command": "st-flash write ./BUILD/RELEASE/firmware.bin 0x8000000",
+            "windows": {
+                "command": "ST-LINK_CLI",
+                "args": [
+                    "-P",
+                    "${workspaceFolder}\\BUILD\\RELEASE\\firmware.bin",
+                    "0x08000000",
+                    "-V",
+                    "\"after_programming\"",
+                    "-Rst"
+                ]
+            },
+        },
+        {
+            "label": "FLASH FIRMWARE (DEBUG)",
+            "type": "shell",
+            "command": "st-flash write ./BUILD/DEBUG/firmware.bin 0x8000000",
+            "windows": {
+                "command": "ST-LINK_CLI",
+                "args": [
+                    "-P",
+                    "${workspaceFolder}\\BUILD\\DEBUG\\firmware.bin",
+                    "0x08000000",
+                    "-V",
+                    "\"after_programming\"",
+                    "-Rst"
+                ]
+            },
+        },
+        {
+            "label": "CLEAN",
+            "type": "shell",
+            "command": "rm -rf ${workspaceFolder}/BUILD/RELEASE/* ${workspaceFolder}/BUILD/DEBUG/*"
         }
     ]
 }

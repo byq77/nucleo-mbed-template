@@ -1,2 +1,5 @@
-BUILD/
-.B*
+BUILD/RELEASE
+BUILD/DEBUG
+BUILD/DEVELOP
+mbed_settings.py
+mbed_settings.pyc
