@@ -1,15 +1,7 @@
 {
-    "config": {
-        "debug-logs":{        
-            "help": "UART debug logs.",
-            "macro_name": "DEBUG_LOGS",
-            "value": 1
-        }
-    },
-    "macros" : [
-        
-    ],
-    "target_overrides" : {
+    "config": {},
+    "macros": [],
+    "target_overrides": {
         "NUCLEO_F401RE": {
             "events.shared-dispatch-from-application": 1,
             "platform.default-serial-baud-rate": 115200,

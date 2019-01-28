@@ -14,7 +14,7 @@
                 "-t",
                 "GCC_ARM",
                 "--profile",
-                "${workspaceFolder}/custom_profiles/release.json",
+                "release",
                 "-c",
                 "-N",
                 "firmware",
@@ -53,7 +53,7 @@
                 "-t",
                 "GCC_ARM",
                 "--profile",
-                "${workspaceFolder}/custom_profiles/release.json",
+                "release",
                 "-N",
                 "firmware",
                 "--source",
@@ -94,7 +94,7 @@
                 "-t",
                 "GCC_ARM",
                 "--profile",
-                "${workspaceFolder}/custom_profiles/release.json",
+                "debug",
                 "-c",
                 "-N",
                 "firmware",
@@ -103,7 +103,7 @@
                 "--source",
                 "${workspaceFolder}",
                 "--build",
-                "${workspaceFolder}/BUILD/RELEASE"
+                "${workspaceFolder}/BUILD/DEBUG"
             ],
             "group": "build",
             "problemMatcher": {
@@ -133,7 +133,7 @@
                 "-t",
                 "GCC_ARM",
                 "--profile",
-                "${workspaceFolder}/custom_profiles/debug.json",
+                "debug",
                 "-N",
                 "firmware",
                 "--source",
@@ -195,7 +195,10 @@
         {
             "label": "CLEAN",
             "type": "shell",
-            "command": "rm -rf ${workspaceFolder}/BUILD/RELEASE/* ${workspaceFolder}/BUILD/DEBUG/*"
+            "command": "rm -rf ${workspaceFolder}/BUILD/RELEASE/* ${workspaceFolder}/BUILD/DEBUG/*",
+            "windows": {
+                "command": "rm -rf ${workspaceFolder}\\BUILD\\RELEASE\\* ${workspaceFolder}\\BUILD\\DEBUG\\*"
+            }
         }
     ]
 }
