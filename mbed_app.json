@@ -3,7 +3,7 @@
     "macros": [],
     "target_overrides": {
         "NUCLEO_F401RE": {
-            "events.shared-dispatch-from-application": 1,
+            "events.shared-dispatch-from-application": 0,
             "platform.default-serial-baud-rate": 115200,
             "platform.stdio-baud-rate": 115200
         }

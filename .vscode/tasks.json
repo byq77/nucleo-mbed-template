@@ -28,10 +28,7 @@
             "group": "build",
             "problemMatcher": {
                 "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}"
-                ],
+                "fileLocation": "absolute",
                 "pattern": {
                     "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 2,
@@ -69,10 +66,7 @@
             },
             "problemMatcher": {
                 "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}"
-                ],
+                "fileLocation": "absolute",
                 "pattern": {
                     "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 2,
@@ -108,10 +102,7 @@
             "group": "build",
             "problemMatcher": {
                 "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}"
-                ],
+                "fileLocation": "absolute",
                 "pattern": {
                     "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 2,
@@ -146,10 +137,7 @@
             "group": "build",
             "problemMatcher": {
                 "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}"
-                ],
+                "fileLocation": "absolute",
                 "pattern": {
                     "regexp": "^(\\[ERROR\\])*\\s*(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 2,
@@ -193,12 +181,14 @@
             },
         },
         {
-            "label": "CLEAN",
+            "label": "CLEAN RELEASE",
             "type": "shell",
-            "command": "rm -rf ${workspaceFolder}/BUILD/RELEASE/* ${workspaceFolder}/BUILD/DEBUG/*",
-            "windows": {
-                "command": "rm -rf ${workspaceFolder}\\BUILD\\RELEASE\\* ${workspaceFolder}\\BUILD\\DEBUG\\*"
-            }
+            "command": "rm -rf ${workspaceFolder}/BUILD/RELEASE/*",
+        },
+        {
+            "label": "CLEAN DEBUG",
+            "type": "shell",
+            "command": "rm -rf ${workspaceFolder}/BUILD/DEBUG/*",
         }
     ]
 }
