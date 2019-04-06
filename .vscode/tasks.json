@@ -183,12 +183,12 @@
         {
             "label": "CLEAN RELEASE",
             "type": "shell",
-            "command": "rm -rf ${workspaceFolder}/BUILD/RELEASE/*",
+            "command": "rm -rf ${workspaceFolder}/BUILD/RELEASE",
         },
         {
             "label": "CLEAN DEBUG",
             "type": "shell",
-            "command": "rm -rf ${workspaceFolder}/BUILD/DEBUG/*",
+            "command": "rm -rf ${workspaceFolder}/BUILD/DEBUG",
         }
     ]
 }
