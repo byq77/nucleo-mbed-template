@@ -8,6 +8,7 @@ int main()
     while(1)
     {
         led = !led;
-        ThisThread::sleep_for(1000);
+        printf("Hello World!\r\n");
+        ThisThread::sleep_for(2000);
     }
 }

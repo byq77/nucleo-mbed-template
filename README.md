@@ -1,4 +1,6 @@
 # ST-NUCLEO F401RE Mbed template for VS Code and MbedOS
+version for mbed-os-5.14.0
+
 
 `.mbedignore` in `mbed-os` folder:
 
